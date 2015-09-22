@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
-import com.previsaotempo.ws.CurrentWeatherDto;
+import com.previsaotempo.dto.PrevisaoTempoAtualDto;
 import com.previsaotempo.ws.CurrentWeatherWSClient;
 
 @Path("/previsaoTempo")
@@ -23,7 +23,7 @@ public class CurrentWeatherResource {
 	@Path("{city}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getCurrentWeather(@PathParam("city")String city) throws Exception {
-		CurrentWeatherDto current = CurrentWeatherWSClient.obterCurrentWeather(city, COUNTRY);
+		PrevisaoTempoAtualDto current = CurrentWeatherWSClient.obterCurrentWeather(city, COUNTRY);
 		return Response.status(200).entity(current).build();
 	}
 }
