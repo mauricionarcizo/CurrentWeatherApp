@@ -1,0 +1,12 @@
+com\net\webservicex\ObjectFactory.class
+com\previsaotempo\api\ApplicationConfiguration.class
+com\net\webservicex\GetCitiesByCountryResponse.class
+com\previsaotempo\api\CurrentWeatherResource.class
+com\net\webservicex\GetCitiesByCountry.class
+com\net\webservicex\GetWeatherResponse.class
+com\net\webservicex\package-info.class
+com\previsaotempo\ws\CurrentWeatherDto.class
+com\previsaotempo\ws\CurrentWeatherWSClient.class
+com\net\webservicex\GetWeather.class
+com\net\webservicex\GlobalWeather.class
+com\net\webservicex\GlobalWeatherSoap.class
