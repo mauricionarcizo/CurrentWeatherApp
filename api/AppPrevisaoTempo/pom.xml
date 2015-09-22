@@ -133,6 +133,12 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.0.1.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1203-jdbc42</version>
+		</dependency>
+
 
 	</dependencies>
 	<build>
