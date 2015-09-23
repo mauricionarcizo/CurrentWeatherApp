@@ -22,12 +22,14 @@ public class CurrentWeatherResource {
 	private static final String COUNTRY = "Brazil";
 
 	@GET
-	@Path("{city}")
+	@Path("byCity/{city}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getPrevisaoTempoByCity(@PathParam("city")String city) throws Exception {
 		PrevisaoTempoAtualDto current = CurrentWeatherWSClient.obterCurrentWeather(city, COUNTRY);
 		Gson gson = new Gson();
-		return Response.status(200).entity(gson.toJson(current)).header("Access-Control-Allow-Origin", "*").build();
+		String json =gson.toJson(current);
+		System.out.println(json);
+		return Response.status(200).entity(json).header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 	@GET

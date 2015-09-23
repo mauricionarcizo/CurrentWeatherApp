@@ -22,7 +22,7 @@
         }
 
         function _pesquisarPrevisaoTempo() {
-            Restangular.one(vm.cidadeSelecionada)
+            Restangular.one('byCity', vm.cidadeSelecionada)
                 .get()
                 .then(function(result) {
                     vm.previsaoTempo = result;
