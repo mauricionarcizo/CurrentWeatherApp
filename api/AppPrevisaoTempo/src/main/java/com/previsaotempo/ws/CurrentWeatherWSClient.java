@@ -1,7 +1,6 @@
 package com.previsaotempo.ws;
 
 import java.io.StringReader;
-import java.util.Collections;
 import java.util.Optional;
 
 import javax.xml.bind.JAXBContext;
@@ -37,7 +36,7 @@ public class CurrentWeatherWSClient {
 		JAXBContext jAXBContext = JAXBContext.newInstance(CidadePorPaisDto.class);
 		Unmarshaller unmarshaller = jAXBContext.createUnmarshaller();
 		CidadePorPaisDto cidades = (CidadePorPaisDto) unmarshaller.unmarshal(new StringReader(response));
-		
+
 		if (!Optional.ofNullable(cidades.getCidades()).isPresent()) {
 			throw new CidadesNotFoundException();
 		}

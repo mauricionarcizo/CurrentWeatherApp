@@ -27,15 +27,17 @@ public class CurrentWeatherResource {
 	public Response getPrevisaoTempoByCity(@PathParam("city")String city) throws Exception {
 		PrevisaoTempoAtualDto current = CurrentWeatherWSClient.obterCurrentWeather(city, COUNTRY);
 		Gson gson = new Gson();
-		return Response.status(200).entity(gson.toJson(current)).build();
+		return Response.status(200).entity(gson.toJson(current)).header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 	@GET
 	@Path("cidades")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getCidades() throws Exception {
+		
 		CidadePorPaisDto cidades = CurrentWeatherWSClient.obterCidadesPorPais(COUNTRY);
 		Gson gson = new Gson();
-		return Response.status(200).entity(gson.toJson(cidades.getCidades())).build();
+		String json = gson.toJson(cidades.getCidades());
+		return Response.status(200).entity(json).header("Access-Control-Allow-Origin", "*").build();
 	}
 }
