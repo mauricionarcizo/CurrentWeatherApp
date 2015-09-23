@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <title>App Previsao Tempo</title>
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./bower_components/angular/angular.min.js"></script>
+    <script src="./bower_components/restangular/dist/restangular.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/underscorejs/1.5.1/underscore-min.js"></script>
+    <script src="app.js"></script>
+    <style>
+    .jumbotron {
+        width: 600px;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    </style>
+</head>
+
+<body ng-controller="AppCtrl as appCtrl">
+    <div class="jumbotron">
+        <p>Selecione uma cidade</p>
+        <select name="cidades" ng-model="appCtrl.cidadeSelecionada">
+            <option ng-repeat="cidade in appCtrl.cidades | orderBy:'cidade'" value="{{cidade.cidade}}">{{cidade.cidade}}</option>
+        </select>
+        <hr/>
+        <button class="btn btn-primary btn-block" ng-click="appCtrl.pesquisarPrevisaoTempo()" ng-disabled="!appCtrl.cidadeSelecionada">Pesquisar</button>
+        <div ng-if="appCtrl.previsaoTempo">
+            <hr/>
+            <label style="display:block;">Temperadura
+                <input style="width: 60%;" type="text" value="{{appCtrl.previsaoTempo.temperatura}}">
+            </label>
+            <label style="display:block;">Vento
+                <input style="width: 60%;" type="text" value="{{appCtrl.previsaoTempo.vento}}">
+            </label>
+            <label style="display:block;">Visibilidade
+                <input style="width: 60%;" type="text" value="{{appCtrl.previsaoTempo.visibilidade}}">
+            </label>
+            <label style="display:block;">Humidade relativa do ar
+                <input style="width: 60%;" type="text" value="{{appCtrl.previsaoTempo.humidadeRelativa}}">
+            </label>
+        </div>
+    </div>
+</body>
+
+</html>
