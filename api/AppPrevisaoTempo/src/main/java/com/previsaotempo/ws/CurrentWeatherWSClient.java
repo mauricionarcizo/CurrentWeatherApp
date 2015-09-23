@@ -38,7 +38,7 @@ public class CurrentWeatherWSClient {
 		Unmarshaller unmarshaller = jAXBContext.createUnmarshaller();
 		CidadePorPaisDto cidades = (CidadePorPaisDto) unmarshaller.unmarshal(new StringReader(response));
 		
-		if (Optional.of(cidades.getCidades()).isPresent()) {
+		if (!Optional.ofNullable(cidades.getCidades()).isPresent()) {
 			throw new CidadesNotFoundException();
 		}
 		return cidades;

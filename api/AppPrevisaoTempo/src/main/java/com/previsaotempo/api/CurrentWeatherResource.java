@@ -9,6 +9,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
+import com.google.gson.Gson;
+import com.previsaotempo.dto.CidadePorPaisDto;
 import com.previsaotempo.dto.PrevisaoTempoAtualDto;
 import com.previsaotempo.ws.CurrentWeatherWSClient;
 
@@ -22,8 +24,18 @@ public class CurrentWeatherResource {
 	@GET
 	@Path("{city}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getCurrentWeather(@PathParam("city")String city) throws Exception {
+	public Response getPrevisaoTempoByCity(@PathParam("city")String city) throws Exception {
 		PrevisaoTempoAtualDto current = CurrentWeatherWSClient.obterCurrentWeather(city, COUNTRY);
-		return Response.status(200).entity(current).build();
+		Gson gson = new Gson();
+		return Response.status(200).entity(gson.toJson(current)).build();
+	}
+	
+	@GET
+	@Path("cidades")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getCidades() throws Exception {
+		CidadePorPaisDto cidades = CurrentWeatherWSClient.obterCidadesPorPais(COUNTRY);
+		Gson gson = new Gson();
+		return Response.status(200).entity(gson.toJson(cidades.getCidades())).build();
 	}
 }
